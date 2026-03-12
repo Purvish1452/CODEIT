@@ -1,372 +1,204 @@
-# CodeIt - Competitive Programming Tracker
+# 🚀 CodeIt – Competitive Programming Tracker
 
-A full-stack web application for tracking competitive programming progress across multiple platforms, built with React.js, Express.js, and Node.js.
+**CodeIt** is a full-stack web application that helps competitive programmers **track their progress across multiple platforms** such as **LeetCode, Codeforces, and CodeChef**.
 
-## Features
+It provides **analytics, problem tracking, sheets, and performance insights** in one dashboard.
 
-### MVP Features (Implemented)
+---
 
-1. **Authentication & User Management**
+# ✨ Features
 
-   - Email/password authentication with OTP verification
-   - Google OAuth integration (skips OTP verification)
-   - User profile management
-   - Public/private profile settings
-   - Email verification system
+### 🔐 Authentication
 
-2. **Dashboard**
+* Email & password authentication
+* OTP verification system
+* Google OAuth login
+* Secure authentication using **JWT**
 
-   - Comprehensive statistics overview
-   - Recent activity feed
-   - Progress tracking
-   - Quick action shortcuts
+### 📊 Dashboard
 
-3. **Problem Tracker**
+* Overall CP statistics
+* Recent activity tracking
+* Problem-solving progress overview
 
-   - Add problems from multiple platforms
-   - Status tracking (Todo, Solved, Attempted, Review)
-   - Difficulty and tag-based filtering
-   - Notes and solution storage
+### 🧩 Problem Tracker
 
-4. **Sheet Management**
+* Track problems from multiple platforms
+* Status management: **Todo, Attempted, Solved, Review**
+* Difficulty and tag filtering
+* Notes and solution storage
 
-   - Create custom problem collections
-   - Progress tracking per sheet
-   - Public/private sheet sharing
-   - Template sheets support
+### 📚 Sheet Management
 
-5. **Platform Integrations**
+* Create custom problem sheets
+* Track progress within sheets
+* Public/private sheet sharing
 
-   - LeetCode sync
-   - Codeforces sync
-   - GitHub integration
-   - Automated data synchronization
+### 🔗 Platform Integrations
 
-6. **User Profiles**
-   - Public profile pages
-   - Statistics showcase
-   - Badge system
-   - Social features
+* **LeetCode**
+* **Codeforces**
+* **GitHub**
+* Automatic data synchronization
 
-## Tech Stack
+### 👤 User Profiles
 
-### Backend
+* Public developer profiles
+* Statistics and achievements
+* Social features
 
-- **Node.js** - Runtime environment
-- **Express.js** - Web framework
-- **MongoDB** - Database
-- **Mongoose** - ODM
-- **JWT** - Authentication
-- **Passport.js** - OAuth integration
-- **Nodemailer** - Email sending for OTP verification
-- **Axios** - HTTP client for API calls
-- **Node-cron** - Background job scheduling
+---
 
-### Frontend
+# 🛠 Tech Stack
 
-- **React.js** - UI framework
-- **React Router** - Client-side routing
-- **React Query** - Data fetching and caching
-- **Tailwind CSS** - Styling
-- **React Hook Form** - Form management
-- **React Hot Toast** - Notifications
-- **Lucide React** - Icons
+## Backend
 
-## Project Structure
+* **Node.js**
+* **Express.js**
+* **MongoDB**
+* **Mongoose**
+* **JWT Authentication**
+* **Passport.js (OAuth)**
+* **Node-Cron**
+* **Axios**
+
+## Frontend
+
+* **React.js**
+* **React Router**
+* **React Query**
+* **Tailwind CSS**
+* **React Hook Form**
+* **Lucide Icons**
+
+---
+
+# 📁 Project Structure
 
 ```
-CodeIt/
-├── server/                 # Backend API
-│   ├── config/            # Configuration files
-│   ├── models/            # Database models
-│   ├── routes/            # API routes
-│   ├── middleware/        # Custom middleware
-│   ├── jobs/              # Background jobs
-│   └── index.js           # Server entry point
-├── client/                # Frontend React app
-│   ├── public/            # Static files
-│   ├── src/
-│   │   ├── components/    # Reusable components
-│   │   ├── pages/         # Page components
-│   │   ├── contexts/      # React contexts
-│   │   ├── utils/         # Utility functions
-│   │   └── App.js         # Main app component
-└── package.json           # Root package.json
+CodeIt
+│
+├── server
+│   ├── config
+│   ├── models
+│   ├── routes
+│   ├── middleware
+│   ├── jobs
+│   └── index.js
+│
+├── client
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── contexts
+│   │   ├── utils
+│   │   └── App.js
+│
+└── package.json
 ```
 
-## Installation & Setup
+---
 
-### Prerequisites
+# ⚙️ Installation
 
-- Node.js (v16 or higher)
-- MongoDB (local or cloud instance)
-- Git
-
-### 1. Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/yourusername/CodeIt.git
 cd CodeIt
 ```
 
-### 2. Install Dependencies
+### 2️⃣ Install Dependencies
 
 ```bash
-# Install root dependencies
 npm install
-
-# Install server dependencies
 npm run install-server
-
-# Install client dependencies
 npm run install-client
 ```
 
-### 3. Environment Setup
+### 3️⃣ Setup Environment Variables
 
-#### Server Environment (.env)
-
-Create a `.env` file in the `server` directory:
+Create `.env` inside **server**
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/CodeIt
-JWT_SECRET=your-super-secret-jwt-key-here
-JWT_EXPIRE=7d
-
-# Email Configuration (Required for OTP verification)
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASSWORD=your-gmail-app-password
-
-# Google OAuth (Optional)
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-
-# Frontend URL
+MONGODB_URI=your_mongodb_connection
+JWT_SECRET=your_secret
 CLIENT_URL=http://localhost:3000
-
-# API Keys for platform integrations (Optional)
-GITHUB_TOKEN=your-github-token
 ```
 
-> **📧 Email Setup:** See [EMAIL_SETUP.md](./EMAIL_SETUP.md) for detailed instructions on configuring Gmail App Password for OTP verification.
-
-#### Client Environment (.env)
-
-Create a `.env` file in the `client` directory:
+Create `.env` inside **client**
 
 ```env
 REACT_APP_API_URL=http://localhost:5000/api
 ```
 
-### 4. Database Setup
-
-Make sure MongoDB is running on your system. The application will automatically create the necessary collections.
-
-For MongoDB Atlas (cloud):
-
-1. Create a cluster at [MongoDB Atlas](https://www.mongodb.com/atlas)
-2. Get your connection string
-3. Replace `MONGODB_URI` in your `.env` file
-
-### 5. Google OAuth Setup (Optional)
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select existing one
-3. Enable Google+ API
-4. Create OAuth 2.0 credentials
-5. Add authorized redirect URIs:
-   - `http://localhost:5000/api/auth/google/callback`
-6. Copy Client ID and Client Secret to your `.env` file
-
-### 6. Start the Application
-
-#### Development Mode
+### 4️⃣ Run the Project
 
 ```bash
-# Start both server and client concurrently
 npm run dev
-
-# Or start them separately:
-# Terminal 1 - Start server
-npm run server
-
-# Terminal 2 - Start client
-npm run client
 ```
 
-#### Production Mode
-
-```bash
-# Build client
-npm run build
-
-# Start server (serves built client)
-npm start
-```
-
-### 7. Access the Application
-
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
-- **API Health Check**: http://localhost:5000/api/health
-
-## API Endpoints
-
-### Authentication
-
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `GET /api/auth/google` - Google OAuth
-- `GET /api/auth/me` - Get current user
-- `PUT /api/auth/profile` - Update profile
-
-### Problems
-
-- `GET /api/problems` - Get user problems
-- `POST /api/problems` - Add new problem
-- `PUT /api/problems/:id` - Update problem
-- `DELETE /api/problems/:id` - Delete problem
-
-### Sheets
-
-- `GET /api/sheets` - Get user sheets
-- `POST /api/sheets` - Create new sheet
-- `GET /api/sheets/:id` - Get sheet details
-- `PUT /api/sheets/:id` - Update sheet
-
-### Integrations
-
-- `POST /api/integrations/sync/:platform` - Sync platform data
-- `GET /api/integrations/status` - Get integration status
-
-### Dashboard
-
-- `GET /api/dashboard` - Get dashboard data
-- `GET /api/dashboard/analytics` - Get detailed analytics
-
-## Features in Detail
-
-### Problem Tracking
-
-- Add problems manually or import from platforms
-- Track solving status and attempts
-- Add personal notes and solutions
-- Organize with custom tags
-- Filter and search functionality
-
-### Sheet Management
-
-- Create custom problem collections
-- Track progress per sheet
-- Share sheets publicly
-- Fork popular sheets
-- Template sheets for common patterns
-
-### Platform Integration
-
-- **LeetCode**: Sync solved problems and statistics
-- **Codeforces**: Import contest history and ratings
-- **GitHub**: Showcase repositories and contributions
-- **Automated Sync**: Background jobs update data regularly
-
-### Analytics & Insights
-
-- Solving patterns and trends
-- Difficulty progression tracking
-- Platform-wise statistics
-- Tag-based analysis
-- Streak tracking
-
-## Customization
-
-### Adding New Platforms
-
-1. Add platform configuration in `server/models/User.js`
-2. Implement sync logic in `server/routes/integrations.js`
-3. Add platform colors in `client/src/utils/helpers.js`
-4. Update UI components to display new platform
-
-### Styling
-
-The application uses Tailwind CSS for styling. Customize:
-
-- Colors in `client/tailwind.config.js`
-- Component styles in `client/src/index.css`
-- Theme variables for consistent branding
-
-## Deployment
-
-### Backend Deployment (Heroku/Railway/DigitalOcean)
-
-1. Set environment variables
-2. Ensure MongoDB connection
-3. Deploy using platform-specific instructions
-
-### Frontend Deployment (Vercel/Netlify)
-
-1. Build the React app: `npm run build`
-2. Deploy the `build` folder
-3. Set environment variables for API URL
-
-### Full-Stack Deployment (Docker)
-
-```dockerfile
-# Example Dockerfile for full-stack deployment
-FROM node:16-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-EXPOSE 5000
-CMD ["npm", "start"]
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## Troubleshooting
-
-### Common Issues
-
-1. **MongoDB Connection Error**
-
-   - Ensure MongoDB is running
-   - Check connection string in `.env`
-   - Verify network access for cloud databases
-
-2. **Google OAuth Not Working**
-
-   - Verify client ID and secret
-   - Check authorized redirect URIs
-   - Ensure Google+ API is enabled
-
-3. **CORS Issues**
-
-   - Check `CLIENT_URL` in server `.env`
-   - Verify CORS configuration in `server/index.js`
-
-4. **Build Errors**
-   - Clear node_modules and reinstall
-   - Check Node.js version compatibility
-   - Verify all environment variables
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Inspired by Codolio and similar competitive programming trackers
-- Built with modern web development best practices
-- Designed for scalability and maintainability
+Frontend → http://localhost:3000
+Backend → http://localhost:5000
 
 ---
 
-For questions or support, please open an issue in the repository.
+# 📡 API Endpoints
+
+### Authentication
+
+```
+POST /api/auth/register
+POST /api/auth/login
+GET  /api/auth/me
+PUT  /api/auth/profile
+```
+
+### Problems
+
+```
+GET    /api/problems
+POST   /api/problems
+PUT    /api/problems/:id
+DELETE /api/problems/:id
+```
+
+### Sheets
+
+```
+GET  /api/sheets
+POST /api/sheets
+GET  /api/sheets/:id
+PUT  /api/sheets/:id
+```
+
+---
+
+# 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Submit a Pull Request
+
+---
+
+# ⭐ Support
+
+If you like this project, please consider **starring the repository** ⭐
+
+---
+
+# 👨‍💻 Author
+
+**Purvish Panchal**
+
+* GitHub: https://github.com/Purvish1452
+* LinkedIn: https://www.linkedin.com/in/purvish-panchal-05206a294/
+
+**Shrey Mehta**
+
+* GitHub: https://github.com/ShreyMehta09
+* LinkedIn: https://www.linkedin.com/in/shreymehta09/
